@@ -4,12 +4,11 @@ const {
 
 const userController = {
 
-    //get all users
+   
     getAllUsers(req, res) {
         User.find({})
             .populate({
                 path: 'thoughts',
-                //allows to remove __v from visuals
                 select: ('-__v')
             })
             .populate({
@@ -17,7 +16,6 @@ const userController = {
                 select: ('-__v')
             })
             .select('-__v')
-            // sort by descending order by the _id value
             .sort({
                 _id: -1
             })
@@ -28,7 +26,7 @@ const userController = {
             });
     },
 
-    //get one user by id
+
     getUserById({
         params
     }, res) {
@@ -47,7 +45,6 @@ const userController = {
             });
     },
 
-    //create user
     createUser({
         body
     }, res) {
@@ -56,7 +53,6 @@ const userController = {
             .catch(err => res.status(400).json(err));
     },
 
-    //update user by id
     updateUser({
         params,
         body
@@ -78,8 +74,6 @@ const userController = {
             })
             .catch(err => res.status(400).json(err));
     },
-
-    //delete user
     deleteUser({
         params
     }, res) {
@@ -106,7 +100,6 @@ const userController = {
                         }
                     })
                     .then(() => {
-                        //deletes user's thought associated with id
                         Thought.deleteMany({
                                 username: dbUserData.username
                             })
@@ -130,8 +123,6 @@ const userController = {
                 res.status(400).json(err);
             })
     },
-
-    //add friends
     addToFriendList({
         params
     }, res) {
@@ -159,7 +150,6 @@ const userController = {
             });
     },
 
-    //delete friend
     removefromFriendList({
         params
     }, res) {
