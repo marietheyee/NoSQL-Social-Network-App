@@ -4,9 +4,8 @@ const dateFormat = require("../utils/dateFormat");
 const ReactionSchema = new Schema(
   {
     reactionId: {
-      // Mongoose's ObjectId data type
       type: Schema.Types.ObjectId,
-      // Default value is set to a new ObjectId
+     
       default: () => new Types.ObjectId(),
     },
 
@@ -23,9 +22,7 @@ const ReactionSchema = new Schema(
 
     createdAt: {
       type: Date,
-      // Set default value to the current timestamp
       default: Date.now,
-      // Use a getter method to format the timestamp on query
       get: (timestamp) => dateFormat(timestamp),
     },
   },
@@ -41,7 +38,7 @@ const ThoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      required: "Thought is Required",
+      required: "Please add thought.",
       minlength: 1,
       maxlength: 280,
     },
@@ -49,7 +46,6 @@ const ThoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      // Use a getter method to format the timestamp on query
       get: (timestamp) => dateFormat(timestamp),
     },
 
@@ -57,8 +53,6 @@ const ThoughtSchema = new Schema(
       type: String,
       required: true,
     },
-
-    // array of nested documents created with the reactionSchema
     reactions: [ReactionSchema],
   },
   {
