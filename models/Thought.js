@@ -11,14 +11,14 @@ const ReactionSchema = new Schema(
     },
     reactionBody: {
       type: String,
-      required: 'No really. We really wanna hear what you have to say.',
+      required: 'What is going on in your world?',
       minlength: 1,
       maxlength: 280,
       trim: true,
     },
     username: {
       type: String,
-      required: 'Gotta know your username. Please enter it here.',
+      required: 'Please enter your username.',
     },
     createdAt: {
       type: Date,
@@ -38,7 +38,7 @@ const ThoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      required: 'You gotta enter a thought.',
+      required: 'Any thoughts?',
       minlength: 1,
       maxlength: 280,
     },
@@ -49,7 +49,7 @@ const ThoughtSchema = new Schema(
     },
     username: {
       type: String,
-      required: 'We have to know your username.',
+      required: 'User name, please.',
     },
 
     reactions: [ReactionSchema],
@@ -72,5 +72,6 @@ ThoughtSchema.virtual('reactionCount').get(function () {
 
 
 const Thought = model('Thought', ThoughtSchema);
+
 
 module.exports = Thought;

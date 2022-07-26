@@ -8,7 +8,7 @@ const UserSchema = new Schema(
     username: {
       type: String,
       unique: true,
-      required: 'We need your username here please and thanks.',
+      required: 'Enter your username',
       trim: true,
     },
     email: {
@@ -17,7 +17,7 @@ const UserSchema = new Schema(
       // mongoose email validation
       match: [
         /.+@.+\..+/,
-        "C'mon, give us something valid. We have to know where to send your spam email.",
+        "Please enter a valid email address.",
       ],
     },
 

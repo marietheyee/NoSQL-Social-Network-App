@@ -1,4 +1,4 @@
-//dependencies
+// dependencies
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -22,7 +22,7 @@ mongoose.connect(
     useUnifiedTopology: true,
 });
 
-// Use this to log mongo queries being executed
+// for logging mongo queries being used
 mongoose.set('debug', true);
 
 app.use(require('./routes'));
