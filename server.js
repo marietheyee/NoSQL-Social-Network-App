@@ -22,4 +22,6 @@ mongoose.connect(
 mongoose.set('debug', true);
 
 app.use(require('./routes'));
+
+// port listening
 app.listen(PORT, () => console.log(`Status: 🤘 @ localhost:${PORT}`));
