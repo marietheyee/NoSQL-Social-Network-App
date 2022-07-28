@@ -36,20 +36,20 @@ const thoughtController = {
   },
 
  
-  createThought({ params, body }, res) {
+  createThought({ body }, res) {
     Thought.create(body)
-      .then(({ _id }) => {
-        return User.findOneAndUpdate(
-          { _id: body.userId },
-          { $push: { thoughts: _id } },
-          { new: true }
-        );
-      })
+        .then(({ username, _id }) => {
+            return User.findOneAndUpdate(
+                { username: username },
+                { $push: { thoughts: _id } },
+                { new: true, runValidators: true }
+            )
+        })
       .then((dbUserData) => {
         if (!dbUserData) {
           return res
             .status(404)
-            .json({ message: "No user with this idea!" });
+            .json({ message: "No user with this id!" });
         }
 
         res.json({ message: "Thought created!" });
