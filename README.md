@@ -1,11 +1,5 @@
 # NoSQL-Social-Network-App
 
-# Table of Contents
-* Description
-* Technology
-* Installation
-* Links
-
 # Description
 A social network application in which users can share thoughts, react to thoughts, and make friends.
 
